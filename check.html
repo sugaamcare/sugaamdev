@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Example</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close-button" onclick="togglePopup()">&times;</span>
+            <h2>Unlock Your Digital Potential with SUGAAM!</h2>
+            <p>Special Offer: Get a FREE Customized AI Chatbot with Any Website Development Project!</p>
+            <p>Enhance your customer engagement and streamline your business operations with our cutting-edge AI chatbot, tailored specifically for your needs. Don't miss out on this limited-time offer!</p>
+            <p>Offer valid for a limited time only. Terms and conditions apply.</p>
+            <form action="https://docs.google.com/forms/your-google-form-link" method="post" target="_blank">
+                <label for="name">Your name</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <button id="reopen-button" class="reopen-button" onclick="togglePopup()">Reopen Popup</button>
+    <script src="js/script.js"></script>
+</body>
+</html>
