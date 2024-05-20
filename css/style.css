@@ -939,7 +939,7 @@ a:focus {
   right: 10px;
   bottom: 10px;
 }
-@media (max-width: 375px) {
+@media (max-width: 475px) {
   .popup-content input[type="text"], .popup-content input[type="email"] {
       width: calc(100% - 20px);
       margin: 10px 0;
