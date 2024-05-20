@@ -189,8 +189,8 @@
     </div>
   </section>
   <!-- end service section -->
-  <!-- popup section -->
-  <!-- <div class="elfsight-app-9fab6355-3af8-4671-9ce8-ebd8d39efc1c" data-elfsight-app-lazy></div> -->
+  
+  
 
   <!-- about section -->
 
@@ -224,23 +224,21 @@
 
   <!-- end about section -->
   <!-- pop-up section -->
-  <div id="popup" class="popup">
+  <div class="popup" id="popup">
     <div class="popup-content">
-        <span class="close-button" onclick="togglePopup()">&times;</span>
-        <h2>Unlock Your Digital Potential with SUGAAM!</h2>
+        <button class="close-btn" onclick="closePopup()">×</button>
+        <h1>Unlock Your Digital Potential with SUGAAM!</h1>
         <p>Special Offer: Get a FREE Customized AI Chatbot with Any Website Development Project!</p>
         <p>Enhance your customer engagement and streamline your business operations with our cutting-edge AI chatbot, tailored specifically for your needs. Don't miss out on this limited-time offer!</p>
         <p>Offer valid for a limited time only. Terms and conditions apply.</p>
-        <form action="https://docs.google.com/forms/your-google-form-link" method="post" target="_blank">
-            <label for="name">Your name</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email *</label>
-            <input type="email" id="email" name="email" required>
-            <button type="submit">Submit</button>
+        <form id="popup-form" action="https://docs.google.com/forms/d/e/1FAIpQLSfKfIh8qBERSqEIuHOcXwuV34fQJHc0qtLa1eSH8Ti-IRGe-g/viewform?embedded=true" method="POST" target="_blank">
+            <input type="text" name="entry.YOUR_NAME_FIELD_ID" placeholder="Your name" required>
+            <input type="text" name="entry.YOUR_PHONE_FIELD_ID" placeholder="Phone number" required>
+            <input type="submit" value="Submit">
         </form>
     </div>
 </div>
-<button id="reopen-button" class="reopen-button" onclick="togglePopup()">see Offers</button>
+<button class="reopen-btn" id="reopen-btn" onclick="openPopup()">See Offers</button>
 
   <!-- case section -->
 
