@@ -1,30 +1,34 @@
-document.addEventListener('DOMContentLoaded', function () {
-    openPopup();
-});
 
-function openPopup() {
-    document.getElementById('popup').classList.add('active');
-    document.getElementById('reopen-btn').style.display = 'none';
-}
+        document.addEventListener('DOMContentLoaded', function () {
+            openCorrectPopup();
+        });
 
-function closePopup() {
-    document.getElementById('popup').classList.remove('active');
-    document.getElementById('reopen-btn').style.display = 'block';
-}
+        function openCorrectPopup() {
+            var screenWidth = window.innerWidth;
+            if (screenWidth >= 476) {
+                openPopup('popup-desktop');
+            } else {
+                openPopup('popup-mobile');
+            }
+        }
 
-document.getElementById('popup').addEventListener('click', function (e) {
-    if (e.target === this) {
-        closePopup();
-    }
-});
+        function openPopup(popupId) {
+            document.getElementById(popupId).classList.add('active');
+        }
 
-document.getElementById('popup-form').addEventListener('submit', function (e) {
-    var name = this.querySelector('input[name="entry.YOUR_NAME_FIELD_ID"]').value;
-    var phone = this.querySelector('input[name="entry.YOUR_PHONE_FIELD_ID"]').value;
+        function closePopup(popupId) {
+            document.getElementById(popupId).classList.remove('active');
+        }
+
+        document.getElementById('popup-desktop').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closePopup('popup-desktop');
+            }
+        });
+
+        document.getElementById('popup-mobile').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closePopup('popup-mobile');
+            }
+        });
     
-    
-    if (name === "" || phone === "" ) {
-        e.preventDefault();
-        alert("Please fill in all fields");
-    }
-});
