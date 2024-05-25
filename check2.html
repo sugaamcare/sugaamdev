@@ -18,6 +18,7 @@
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"rel="nofollow" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
    
 
   <!-- font awesome style -->
@@ -28,12 +29,98 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
-  <!-- chat styles -->
   <link href="css/chat.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
 
 </head>
+<style>
+  .floating-btn {
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            background-color: purple;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            z-index: 1000;
+        }
+        .floating-btn-chat {
+            bottom: 50px; /* Adjust to position above the offer button */
+        }
+        
 
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup chat - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+</style>
 
 <body>
 
@@ -250,9 +337,24 @@
         <a href="contact.html">
             <img src="images/pop.png" alt="Special Offer" style="width: 100%; border-radius: 10px;">
         </a>
-        <!-- <a href="contact.html" class="contact-btn">Contact Us</a> -->
+        <a href="contact.html" class="contact-btn">Contact Us</a>
     </div>
 </div>
+
+
+<!-- Chat Box Popup -->
+<div class="popup" id="popup-chat">
+  <div class="popup-content">
+      <button class="close-btn" onclick="closePopup('popup-chat')">×</button>
+      <h1>Chat with Us!</h1>
+      <p>We are here to assist you. Please type your message below and our support team will get back to you shortly.</p>
+      <textarea placeholder="Type your message here..." style="width: 100%; height: 100px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
+      <button style="margin-top: 10px; padding: 10px 20px; background-color: black; color: white; border: none; border-radius: 5px;">Send</button>
+  </div>
+</div>
+<!-- Floating Button for chats -->
+
+
 
 <!-- Reopen Buttons -->
 <button class="reopen-btn desktop-only" onclick="openCorrectPopup()"><i class="fas fa-gift"></i></button>
@@ -315,35 +417,7 @@
   </section>
 
   <!-- end case section -->
- <!-- chatbox -->
-  
- <div id="body"> 
-  
-  <div id="chat-circle" class="btn btn-raised">
-          <div id="chat-overlay"></div>
-          <i class="material-icons">chat</i>
-    </div>
-    
-    <div class="chat-box">
-      <div class="chat-box-header">
-        ChatBot
-        <span class="chat-box-toggle"><i class="material-icons">close</i></span>
-      </div>
-      <div class="chat-box-body">
-        <div class="chat-box-overlay">   
-        </div>
-        <div class="chat-logs">
-         
-        </div><!--chat-log -->
-      </div>
-      <div class="chat-input">      
-        <form>
-          <input type="text" id="chat-input" placeholder="Send a message..."/>
-        <button type="submit" class="chat-submit" id="chat-submit"><i class="material-icons">send</i></button>
-        </form>      
-      </div>
-    </div>
-    </div>
+
 
 
   <!-- contact section -->
@@ -367,7 +441,40 @@
   </section>
 
   <!-- end contact section -->
+  <!-- chatbox -->
+  
+<div id="body"> 
+  
+<div id="chat-circle" class="btn btn-raised">
+        <div id="chat-overlay"></div>
+		    <i class="material-icons">chat</i>
+	</div>
+  
+  <div class="chat-box">
+    <div class="chat-box-header">
+      ChatBot
+      <span class="chat-box-toggle"><i class="material-icons">close</i></span>
+    </div>
+    <div class="chat-box-body">
+      <div class="chat-box-overlay">   
+      </div>
+      <div class="chat-logs">
+       
+      </div><!--chat-log -->
+    </div>
+    <div class="chat-input">      
+      <form>
+        <input type="text" id="chat-input" placeholder="Send a message..."/>
+      <button type="submit" class="chat-submit" id="chat-submit"><i class="material-icons">send</i></button>
+      </form>      
+    </div>
+  </div>
+  </div>
+  
+  <!-- chatbox ends -->
+  
 
+  
   <div class="footer_container">
     <!-- info section -->
 
@@ -499,13 +606,14 @@
         }
     });
 </script>
+
   
   <!-- popper js -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
   </script>
-  <script src="js/chat.js"></script>
   <!-- bootstrap js -->
   <script src="js/bootstrap.js"></script>
+  <script src="js/chat.js"></script>
   <script src="js/custom.js"></script>
   <!-- Google Map -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
