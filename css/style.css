@@ -938,7 +938,7 @@ a:focus {
   cursor: pointer;
   position: fixed;
   right: 10px;
-  bottom: 750px;
+  bottom: 600px;
   z-index: 999;
 }
 .fa-gift{
