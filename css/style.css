@@ -883,6 +883,7 @@ a:focus {
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.3s, visibility 0.3s;
+  z-index: 1000;
 }
 .popup.active {
   visibility: visible;
@@ -890,7 +891,7 @@ a:focus {
 }
 .popup-content {
   background: linear-gradient(135deg, #6025F5, #9C1DB3);
-  /* padding: 20px; */
+  padding: 20px;
   border-radius: 10px;
   max-width: 500px;
   width: 90%;
@@ -901,53 +902,66 @@ a:focus {
 .popup-content h1, .popup-content p {
   margin: 10px 0;
 }
-.popup-content input[type="text"], .popup-content input[type="email"] {
-  width: calc(50% - 10px);
-  padding: 10px;
-  margin: 10px 5px;
-  border: none;
-  border-radius: 5px;
-}
-.popup-content input[type="submit"] {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
+.popup-content .contact-btn {
   background-color: black;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
-}
-.popup-content .close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: transparent;
-  border: none;
-  font-size: 20px;
-  color: white;
-  cursor: pointer;
-}
-.reopen-btn {
-  background-color: purple;
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 10px;
+  text-decoration: none;
+  display: inline-block;
+}
+.popup-content .close-btn {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  background: lightgray;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  color: black;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.reopen-btn {
+  background-color: rgb(128, 0, 0);
+  color: white;
+  padding: 10px 20px;
+  border:none;
+  border-radius: 50px;
+  cursor: pointer;
   position: fixed;
   right: 10px;
-  bottom: 10px;
+  bottom: 750px;
+  z-index: 999;
+}
+.fa-gift{
+  font-size: 30px;
+}
+.desktop-only {
+  display: none;
+}
+.mobile-only {
+  display: none;
+}
+@media (min-width: 476px) {
+  .desktop-only {
+      display: flex;
+  }
 }
 @media (max-width: 475px) {
-  .popup-content input[type="text"], .popup-content input[type="email"] {
-      width: calc(100% - 20px);
-      margin: 10px 0;
+  .mobile-only {
+      display:flex;
   }
   .popup-content .close-btn {
-      position: absolute;
-      top: -20px;
-      left: 50%;
-      transform: translateX(-50%);
+      top: -40px;
+      right: 50%;
+      transform: translateX(50%);
   }
 }
