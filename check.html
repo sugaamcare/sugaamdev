@@ -58,13 +58,19 @@
         }
         .popup-content .close-btn {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            background: transparent;
+            top: -30px;
+            right: -30px;
+            background: lightgray;
             border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
             font-size: 20px;
-            color: white;
+            color: black;
             cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .reopen-btn {
             background-color: purple;
@@ -77,16 +83,15 @@
             right: 10px;
             bottom: 10px;
         }
-        @media (max-width: 375px) {
+        @media (max-width: 475px) {
             .popup-content input[type="text"], .popup-content input[type="email"] {
                 width: calc(100% - 20px);
                 margin: 10px 0;
             }
             .popup-content .close-btn {
-                position: absolute;
-                top: -20px;
-                left: 50%;
-                transform: translateX(-50%);
+                top: -40px;
+                right: 50%;
+                transform: translateX(50%);
             }
         }
     </style>
@@ -95,10 +100,7 @@
     <div class="popup" id="popup">
         <div class="popup-content">
             <button class="close-btn" onclick="closePopup()">×</button>
-            <h1>Unlock Your Digital Potential with SUGAAM!</h1>
-            <p>Special Offer: Get a FREE Customized AI Chatbot with Any Website Development Project!</p>
-            <p>Enhance your customer engagement and streamline your business operations with our cutting-edge AI chatbot, tailored specifically for your needs. Don't miss out on this limited-time offer!</p>
-            <p>Offer valid for a limited time only. Terms and conditions apply.</p>
+            <img src="images/call.png" alt="popup image"/>
             <form id="popup-form" action="https://docs.google.com/forms/d/e/YOUR_GOOGLE_FORM_ID/formResponse" method="POST" target="_blank">
                 <input type="text" name="entry.YOUR_NAME_FIELD_ID" placeholder="Your name" required>
                 <input type="text" name="entry.YOUR_PHONE_FIELD_ID" placeholder="Phone number" required>
